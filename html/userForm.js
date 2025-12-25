@@ -1,0 +1,19 @@
+function userForm(){
+    return `
+    <html>  
+        <head>
+            <title>Login Page</title>
+        </head>
+        <body>
+            <form action="/submit" method="post">
+                <label for="username">Name</label>
+                <input type="text" name="username" placeholder="Username">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Password">
+                <button type="submit" >Login</button>
+            </form> 
+        </body>
+    </html>
+    `
+}
+module.exports = userForm;
