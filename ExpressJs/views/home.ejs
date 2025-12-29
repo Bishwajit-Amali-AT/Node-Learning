@@ -142,53 +142,44 @@
 
 <body>
 
-    <!-- NAVBAR (AS IS) -->
-    <div class="navbar">
-        <a href="/">Home</a>
-        <a href="/about">About Us</a>
-        <a href="/contact">Contact Us</a>
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-    </div>
+    <!-- NAVBAR -->
+    <%- include('partials/navbar') %>
 
-    <!-- HERO -->
-    <section class="hero">
-        <h1>Build Powerful Web Applications</h1>
-        <p>
-            A modern Node.js platform to create fast, secure,
-            and scalable web applications.
-        </p>
-        <a href="/login">Get Started</a>
-    </section>
+        <!-- HERO -->
+        <section class="hero">
+            <h1>Build Powerful Web Applications</h1>
+            <p>
+                A modern Node.js platform to create fast, secure,
+                and scalable web applications.
+            </p>
+            <a href="/login">Get Started</a>
+        </section>
 
-    <!-- FEATURES -->
-    <section class="features">
-        <div class="feature">
-            <h3>⚡ Fast Performance</h3>
-            <p>Optimized backend and frontend for speed.</p>
-        </div>
-        <div class="feature">
-            <h3>🔒 Secure</h3>
-            <p>Best practices for authentication and data safety.</p>
-        </div>
-        <div class="feature">
-            <h3>🚀 Scalable</h3>
-            <p>Built to handle growth and high traffic.</p>
-        </div>
-    </section>
+        <!-- FEATURES -->
+        <section class="features">
+            <div class="feature">
+                <h3>⚡ Fast Performance</h3>
+                <p>Optimized backend and frontend for speed.</p>
+            </div>
+            <div class="feature">
+                <h3>🔒 Secure</h3>
+                <p>Best practices for authentication and data safety.</p>
+            </div>
+            <div class="feature">
+                <h3>🚀 Scalable</h3>
+                <p>Built to handle growth and high traffic.</p>
+            </div>
+        </section>
 
-    <!-- CTA -->
-    <section class="cta">
-        <h2>Ready to Start?</h2>
-        <p>Create an account and launch your project today.</p>
-        <a href="/login">Join Now</a>
-    </section>
+        <!-- CTA -->
+        <section class="cta">
+            <h2>Ready to Start?</h2>
+            <p>Create an account and launch your project today.</p>
+            <a href="/login">Join Now</a>
+        </section>
 
-    <!-- FOOTER -->
-    <footer>
-        © 2025 Your Website. All rights reserved.
-    </footer>
-
+        <!-- FOOTER -->
+        <%- include('partials/footer') %>
 </body>
 
 </html>

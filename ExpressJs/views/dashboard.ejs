@@ -182,13 +182,7 @@
 <body>
 
     <!-- NAVBAR (AS IS) -->
-    <div class="navbar">
-        <a href="/">Home</a>
-        <a href="/about">About Us</a>
-        <a href="/contact">Contact Us</a>
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-    </div>
+    <%- include('partials/navbar') %>
 
     <!-- LOGIN PAGE -->
     <div class="login-page">
@@ -205,30 +199,17 @@
         <!-- FORM PANEL -->
         <div class="form-panel">
             <div class="login-card">
-                <h2>Welcome Back</h2>
-                <p>Please enter your credentials to continue</p>
-
-                <form action="/submit" method="post">
-                    <label>Username</label>
-                    <input type="text" name="username" placeholder="your.username" required>
-
-                    <label>Password</label>
-                    <input type="password" name="password" placeholder="••••••••" required>
-
-                    <div class="actions">
-                        <span></span>
-                        <a href="#">Forgot password?</a>
-                    </div>
-
-                    <button type="submit">Sign In</button>
-                </form>
+                <h2>Thank You for login</h2>
+                <p>Please Verify your account</p>
+                <p>This is your Username : <%= username %></p>
+                <p>This is your Password : <%= password %></p>
 
                 <div class="signup">
                     Don’t have an account? <a href="/register">Create one</a>
                 </div>
             </div>
         </div>
-
+        
     </div>
 
 </body>

@@ -1,10 +1,27 @@
 import express from 'express';
-import { home } from './home.js';
-import { submit } from './authentication.js';
+// import { submit } from './authentication.js';
 import path from 'path';
 
+import { userEdit, userslist } from './Controllers/UserController.js';
+import { login, submit, register } from './Controllers/AuthenticationController.js';
+import { home } from './Controllers/HomeController.js';
+import { aboutUs } from './Controllers/AboutController.js';
+import { contactus } from './Controllers/ContactUsController.js';
+
+import sequelize from './config/database.js';
 const app = express();
 
+// Database Connection Test
+sequelize.authenticate()
+    .then(() => console.log('MySQL connected successfully'))
+    .catch(err => console.error('Unable to connect:', err));
+
+// Create tables based on models
+sequelize.sync({ alter: true })
+    .then(() => console.log('Tables created or updated'))
+    .catch(err => console.error(err));
+
+// ======================================================
 // this is used to call a function inside js files
 // app.get('/',(req,resp)=>{
 //     resp.send(home());
@@ -20,39 +37,28 @@ const app = express();
 
 // ======================================================
 // using ejs template engine to render dynamic data in html files
+const absolutePath = path.resolve('./ExpressJs');
+
 app.set('view engine', 'ejs');
+app.set('views', absolutePath + '/views'); // Now points to ExpressJs/views
 
 // ======================================================
 // this are used to call Html files directly
-
-const absolutePath = path.resolve('./ExpressJs');
 app.use(express.urlencoded({ extended: true })); // to get the form data in req.body
 
-app.get('/', checkAgeMiddleware, (req, resp) => {
-    resp.sendFile(absolutePath + '/home.html');
-});
-app.get('/about', (req, resp) => {
-    resp.sendFile(absolutePath + '/about.html');
-});
-app.get('/contact', (req, resp) => {
-    resp.sendFile(absolutePath + '/contact.html');
-});
-app.get('/login', (req, resp) => {
-    resp.sendFile(absolutePath + '/login.html');
-})
-// here i have called the function from authentication.js when user submit the login form
-app.post('/submit', (req, resp) => {
-    // submit(req,resp);
-    resp.render('dashboard', { username: req.body.username, password: req.body.password });
-});
-
-app.get('/register', (req, resp) => {
-    resp.sendFile(absolutePath + '/register.html');
-})
+app.get('/', home);
+app.get('/about', checkAgeMiddleware, aboutUs);
+app.get('/contact', contactus);
+app.get('/login', login);
+app.post('/submit', submit);
+app.get('/register', register)
+app.get('/users-list', userslist);
+app.get('/users/:id/edit', userEdit)
 
 // 404 page for invalid routes
 app.use((req, resp) => {
-    resp.status(404).sendFile(absolutePath + '/404.html');
+    // resp.status(404).sendFile(absolutePath + '/404.html');
+    resp.status(404).render('404');
 });
 
 // Middleware function to check age

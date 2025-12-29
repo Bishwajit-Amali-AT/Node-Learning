@@ -167,56 +167,51 @@
 
 <body>
 
-    <!-- NAVBAR (AS IS) -->
-    <div class="navbar">
-        <a href="/">Home</a>
-        <a href="/about">About Us</a>
-        <a href="/contact">Contact Us</a>
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-    </div>
+    <!-- NAVBAR -->
+    <%- include('partials/navbar') %>
 
-    <!-- REGISTER PAGE -->
-    <div class="register-page">
+        <!-- REGISTER PAGE -->
+        <div class="register-page">
 
-        <!-- INFO PANEL -->
-        <div class="info-panel">
-            <h1>Create Your Account</h1>
-            <p>
-                Join our platform to manage projects, collaborate with your team,
-                and take your productivity to the next level.
-            </p>
-        </div>
+            <!-- INFO PANEL -->
+            <div class="info-panel">
+                <h1>Create Your Account</h1>
+                <p>
+                    Join our platform to manage projects, collaborate with your team,
+                    and take your productivity to the next level.
+                </p>
+            </div>
 
-        <!-- FORM PANEL -->
-        <div class="form-panel">
-            <div class="register-card">
-                <h2>Sign Up</h2>
-                <p>Fill in your details to create a new account</p>
+            <!-- FORM PANEL -->
+            <div class="form-panel">
+                <div class="register-card">
+                    <h2>Sign Up</h2>
+                    <p>Fill in your details to create a new account</p>
 
-                <form action="/register-submit" method="post">
-                    <label>Full Name</label>
-                    <input type="text" name="fullname" placeholder="Your full name" required>
+                    <form action="/register-submit" method="post">
+                        <label>Full Name</label>
+                        <input type="text" name="fullname" placeholder="Your full name" required>
 
-                    <label>Email Address</label>
-                    <input type="email" name="email" placeholder="you@example.com" required>
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="you@example.com" required>
 
-                    <label>Password</label>
-                    <input type="password" name="password" placeholder="••••••••" required>
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="••••••••" required>
 
-                    <label>Confirm Password</label>
-                    <input type="password" name="confirm_password" placeholder="••••••••" required>
+                        <label>Confirm Password</label>
+                        <input type="password" name="confirm_password" placeholder="••••••••" required>
 
-                    <button type="submit">Register</button>
-                </form>
+                        <button type="submit">Register</button>
+                    </form>
 
-                <div class="login-link">
-                    Already have an account? <a href="/login">Sign In</a>
+                    <div class="login-link">
+                        Already have an account? <a href="/login">Sign In</a>
+                    </div>
                 </div>
             </div>
+
         </div>
 
-    </div>
-
 </body>
+
 </html>
