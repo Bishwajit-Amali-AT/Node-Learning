@@ -167,55 +167,58 @@
                         You are logged in as Demo User
                     </td>
                 </tr>
-            <% } else { %>
-                <tr>
-                    <td colspan="5" style="text-align:center; color:red; font-weight:bold;">
-                        You are not logged in. Please <a href="/login">login</a> to manage users.
-                    </td>
-                </tr>
-            <%}%>
-                    <div class="card">
+                <% } else { %>
+                    <tr>
+                        <td colspan="5" style="text-align:center; color:red; font-weight:bold;">
+                            You are not logged in. Please <a href="/login">login</a> to manage users.
+                        </td>
+                    </tr>
+                    <%}%>
+                        <div class="card">
 
-                        <!-- HEADER + ADD BUTTON -->
-                        <div class="card-header">
-                            <h2>Registered Users</h2>
-                            <a href="/register" class="add-user-btn">+ Add User</a>
-                        </div>
+                            <!-- HEADER + ADD BUTTON -->
+                            <div class="card-header">
+                                <h2>Registered Users</h2>
+                                <a href="/register" class="add-user-btn">+ Add User</a>
+                            </div>
 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% users.forEach(user=> { %>
+                            <table>
+                                <thead>
                                     <tr>
-                                        <td>
-                                            <%= user.name %>
-                                        </td>
-                                        <td>
-                                            <%= user.email %>
-                                        </td>
-                                        <td>
-                                            <%= user.role %>
-                                        </td>
-                                        <td class="status-active">Active</td>
-                                        <td class="action">
-                                            <a href="/users/<%= user.id %>/edit">Edit</a>
-                                            <a href="/users/<%= user.id %>/delete" class="delete">Delete</a>
-                                        </td>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
-                                    <% }) %>
-                            </tbody>
+                                </thead>
+                                <tbody>
+                                    <% users.forEach(user=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= user.name %>
+                                            </td>
+                                            <td>
+                                                <%= user.email %>
+                                            </td>
+                                            <td>
+                                                <%= user.role %>
+                                            </td>
+                                            <td class="status-active">Active</td>
+                                            <td class="action">
+                                                <a href="/users/<%= user.id %>/edit">Edit</a>
+                                                <form action="/users/<%= user.id %>/delete" method="POST"
+                                                    style="display:inline;" onsubmit="return confirm('Are you sure?');">
+                                                    <button type="submit" class="delete">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
 
-                        </table>
+                            </table>
 
-                    </div>
+                        </div>
         </div>
 
         <!-- FOOTER -->

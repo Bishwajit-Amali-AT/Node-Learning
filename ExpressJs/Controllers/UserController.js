@@ -25,9 +25,60 @@ export async function userslist(req, resp) {
 export async function userEdit(req, resp) {
     try {
         let id = req.params.id;
-        const user = await Users.findOne({where:{id}}); // find by primary key
+        const user = await Users.findOne({ where: { id } }); // find by primary key
         if (!user) return resp.status(404).send('User not found');
         resp.render('editUser', { user });
+    } catch (err) {
+        console.error(err);
+        resp.status(500).send('Server error');
+    }
+}
+
+export async function userUpdate(req, resp) {
+    try {
+        let data = req.body;
+        let id = req.body.id;
+        const user = await Users.findOne({ where: { id } }); // find by primary key
+
+        if (!user) {
+            return resp.status(404).send('User not found');
+        }
+        else {
+            await user.update(data);
+            resp.redirect('/users-list');
+        }
+    } catch (err) {
+        console.error(err);
+        resp.status(500).send('Server error');
+    }
+}
+
+export async function userDelete(req, resp) {
+    try {
+        let id = req.params.id;
+        const user = await Users.findOne({ where: { id } }); // find by primary key   
+        if (!user) {
+            return resp.status(404).send('User not found');
+        }
+        else {
+            await user.destroy();
+            resp.redirect('/users-list');
+        }
+    } catch (err) {
+        console.error(err);
+        resp.status(500).send('Server error');
+    }
+}
+
+export async function profile(req, resp) {
+    try {
+        // Assuming user ID is stored in session after login
+        let userId = req.session.user.id;
+        const user = await Users.findOne({ where: { id: userId } }); // find by primary key     
+        if (!user) {
+            return resp.status(404).send('User not found');
+        }
+        resp.render('userProfile', { user });
     } catch (err) {
         console.error(err);
         resp.status(500).send('Server error');

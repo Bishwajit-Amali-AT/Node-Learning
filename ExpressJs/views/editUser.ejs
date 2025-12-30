@@ -139,7 +139,10 @@
                 </div>
 
                 <!-- STATIC EDIT USER FORM -->
-                <form action="#" method="POST">
+                <form action="/users/update" method="POST">
+                    <div>
+                         <input type="hidden" name="id" value="<%= user.id %>">
+                    </div>
                     <div>
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" value="<%= user.name %>" required>

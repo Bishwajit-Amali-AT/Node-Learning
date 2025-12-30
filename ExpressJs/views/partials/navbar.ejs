@@ -3,6 +3,12 @@
     <a href="/users-list">Users</a>
     <a href="/about">About Us</a>
     <a href="/contact">Contact Us</a>
-    <a href="/login">Login</a>
-    <a href="/register">Register</a>
+    <a href="/transcript-video-to-text">Video Transcription</a>
+    <% if (user) { %>
+        <a href="/profile">Profile</a>
+        <a href="/logout">Logout</a>
+    <% } else { %>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    <% } %>
 </div>
