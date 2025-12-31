@@ -8,5 +8,6 @@ export async function isAuthenticated(req, resp, next) {
 
 export async function setUser(req, res, next) {
     res.locals.user = req.session.user;
+    res.locals.messages = req.flash();
     next();
 }

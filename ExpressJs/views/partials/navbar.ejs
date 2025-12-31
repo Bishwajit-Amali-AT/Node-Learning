@@ -4,9 +4,12 @@
     <a href="/about">About Us</a>
     <a href="/contact">Contact Us</a>
     <a href="/transcript-video-to-text">Video Transcription</a>
-    <% if (user) { %>
+
+    <% if (user) { %> <!-- Check if the user is logged in -->
         <a href="/profile">Profile</a>
         <a href="/logout">Logout</a>
+        <a>Welcome, <%= user.name %>!</a> <!-- Display username -->
+
     <% } else { %>
         <a href="/login">Login</a>
         <a href="/register">Register</a>

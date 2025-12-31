@@ -41,10 +41,12 @@ export async function userUpdate(req, resp) {
         const user = await Users.findOne({ where: { id } }); // find by primary key
 
         if (!user) {
+            req.flash('error', 'User User not found!');
             return resp.status(404).send('User not found');
         }
         else {
             await user.update(data);
+            req.flash('success', 'User Updated Successfully!');
             resp.redirect('/users-list');
         }
     } catch (err) {
@@ -62,6 +64,7 @@ export async function userDelete(req, resp) {
         }
         else {
             await user.destroy();
+            req.flash('success', 'User Deleted Successfully!');
             resp.redirect('/users-list');
         }
     } catch (err) {
