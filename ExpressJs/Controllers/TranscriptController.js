@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import OpenAI from 'openai';
 const openai = new OpenAI({
-    apiKey: ""
+    apiKey: "ask this to Bhavik"
 });
 
 // set ffmpeg binary path ONCE
